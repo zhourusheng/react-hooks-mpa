@@ -5,7 +5,9 @@ import reducer from './reducer'
 export default createStore(
   combineReducers(reducer),
   {
-    from: '北京'
+    from: '北京',
+    to: '上海',
+    highSpeed: false
   },
   applyMiddleware(thunk)
 )

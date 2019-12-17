@@ -1,0 +1,15 @@
+.high-speed {
+  position: relative;
+  height: 46px;
+  line-height: 46px;
+  display: flex;
+}
+
+.high-speed-label {
+  text-align: left;
+  flex: 1;
+}
+
+.high-speed-switch {
+  flex: 1;
+}
