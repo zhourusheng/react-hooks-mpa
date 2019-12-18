@@ -6,6 +6,7 @@ import Header from '../components/Header'
 import Submit from './components/Submit'
 import HighSpeed from './components/HighSpeed'
 import Journey from './components/Journey'
+import DepartDate from './components/DepartDate'
 
 import {
   toggleHighSpeed,
@@ -50,6 +51,7 @@ function App(props) {
       </div>
       <form action="/" className="form">
         <Journey from={from} to={to} {...cbs} />
+        <DepartDate />
         <HighSpeed highSpeed={highSpeed} {...highSpeedCbs}/>
         <Submit name="搜索" />
       </form>

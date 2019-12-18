@@ -17,7 +17,7 @@ export function setFrom(from) {
 
 export function setTo(to) {
   return {
-    type: ACTION_SET_FROM,
+    type: ACTION_SET_TO,
     payload: to
   }
 }
