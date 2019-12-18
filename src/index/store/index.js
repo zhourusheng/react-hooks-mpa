@@ -7,7 +7,7 @@ export default createStore(
   {
     from: '北京',
     to: '上海',
-    isCitySelectorVisible: false,
+    isCitySelectorVisible: true,
     currentSelectingLeftCity: false,
     cityData: null,
     isLoadingCityData: false,
