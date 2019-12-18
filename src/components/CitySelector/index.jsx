@@ -1,14 +1,66 @@
-import React, { memo, useState, useMemo } from 'react'
+import React, { memo, useState, useMemo, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import './index.css'
 
+/**
+ * CityList
+ * */ 
+
+const CityList = memo(function CityList(props) {
+  const { sections, toAlpha, onSelect } = props
+  return(
+    <div>
+
+    </div>
+  )
+})
+
+CityList.propTypes = {
+  sections: PropTypes.array.isRequired,
+  toAlpha: PropTypes.func.isRequired,
+  onSelect: PropTypes.func.isRequired
+}
+
+/**
+ * CitySelector
+ * */ 
+
 const CitySelector = memo(function CitySelector(props) {
-  const { show, onBack } = props
+  const {
+    show,
+    onBack,
+    isLoading,
+    cityData,
+    fetchCityData,
+    onSelect
+  } = props
 
   const [searchKey, setSearchKey] = useState('')
 
   const key = useMemo(() => searchKey.trim(), [searchKey])
+
+  // useEffect
+  useEffect(() => {
+    if (!show || cityData || isLoading) {
+      return
+    }
+    // fetchCityData()
+  }, [show, cityData, isLoading])
+
+  const outputCitySections = () => {
+    if (isLoading) {
+      return <div>loading...</div>
+    }
+
+    if (cityData) {
+      return(
+        <CityList />
+      )
+    }
+
+    return <div>error</div>
+  }
 
   return (
     <div
@@ -45,12 +97,18 @@ const CitySelector = memo(function CitySelector(props) {
           &#xf063;
         </i>
       </div>
+      {outputCitySections()}
     </div>
   )
 })
 
 CitySelector.propTypes = {
-  show: PropTypes.bool.isRequired
+  show: PropTypes.bool.isRequired,
+  cityData: PropTypes.object,
+  isLoading: PropTypes.bool.isRequired,
+  onBack: PropTypes.func.isRequired,
+  fetchCityData: PropTypes.func.isRequired,
+  onSelect: PropTypes.func.isRequired
 }
 
 export default CitySelector
