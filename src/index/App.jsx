@@ -11,7 +11,8 @@ import DepartDate from './components/DepartDate'
 import {
   toggleHighSpeed,
   exchangeFromTo,
-  showCitySelector
+  showCitySelector,
+  showDateSelector,
 } from './store/action'
 
 function App(props) {
@@ -19,7 +20,8 @@ function App(props) {
     highSpeed,
     dispatch,
     from,
-    to
+    to,
+    departDate
   } = props
 
 
@@ -31,6 +33,14 @@ function App(props) {
     return bindActionCreators({
       exchangeFromTo,
       showCitySelector
+    },
+      dispatch
+    )
+  }, [dispatch])
+
+  const departDateCbs = useMemo(() => {
+    return bindActionCreators({
+      onClick: showDateSelector
     },
       dispatch
     )
@@ -51,7 +61,7 @@ function App(props) {
       </div>
       <form action="/" className="form">
         <Journey from={from} to={to} {...cbs} />
-        <DepartDate />
+        <DepartDate time={departDate} {...departDateCbs} />
         <HighSpeed highSpeed={highSpeed} {...highSpeedCbs}/>
         <Submit name="搜索" />
       </form>
