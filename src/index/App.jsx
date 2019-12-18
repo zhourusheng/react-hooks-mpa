@@ -8,6 +8,8 @@ import HighSpeed from './components/HighSpeed'
 import Journey from './components/Journey'
 import DepartDate from './components/DepartDate'
 
+import CitySelector from '../components/CitySelector'
+
 import {
   toggleHighSpeed,
   exchangeFromTo,
@@ -21,7 +23,8 @@ function App(props) {
     dispatch,
     from,
     to,
-    departDate
+    departDate,
+    isCitySelectorVisible
   } = props
 
 
@@ -65,6 +68,7 @@ function App(props) {
         <HighSpeed highSpeed={highSpeed} {...highSpeedCbs}/>
         <Submit name="搜索" />
       </form>
+      <CitySelector show={isCitySelectorVisible} />
     </div>
   )
 }
