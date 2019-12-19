@@ -11,7 +11,7 @@ const CityList = memo(function CityList(props) {
   const { sections, toAlpha, onSelect } = props
   return(
     <div>
-
+      CityList
     </div>
   )
 })
@@ -45,8 +45,8 @@ const CitySelector = memo(function CitySelector(props) {
     if (!show || cityData || isLoading) {
       return
     }
-    // fetchCityData()
-  }, [show, cityData, isLoading])
+    fetchCityData()
+  }, [show, cityData, isLoading, fetchCityData])
 
   const outputCitySections = () => {
     if (isLoading) {
